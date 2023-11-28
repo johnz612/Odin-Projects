@@ -26,6 +26,18 @@ body {
 
 .main-container {
   display: flex;
+  width: 100vw;
+  height: 80%;
+}
+
+.scoreboard {
+  flex: 1;
+  flex-shrink: 1;
+}
+
+.container {
+  display: flex;
+  flex: 3;
   flex-direction: column;
   align-items: center;
   gap: 30px;
@@ -33,7 +45,8 @@ body {
 }
 
 .user-options {
-  width: 100vw;
+  margin-top: 50px;
+  width: 80%;
   text-align: center;
   height: 250px;
   display: flex;
@@ -42,7 +55,7 @@ body {
   justify-content: center;
 }
 
-.dog-lava {
+.dog-container {
   background-color: rgb(255, 255, 255);
   height: 600px;
   display: flex;
@@ -57,6 +70,7 @@ body {
 
 .dog {
   height: 200px;
+  position: relative;
 }
 
 .hand-img {
@@ -67,11 +81,9 @@ body {
   padding: 2px;
 }
 
-.user-options {
-  display: flex;
-}
-
 .result-window {
+  height: 250px;
+  margin-top: 50px;
   display: flex;
   gap: 18px;
   align-items: center;
@@ -116,6 +128,28 @@ body {
   margin-top: 16px;
 }
 
+.scoreboard {
+  flex: 1;
+  gap: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.score-text {
+  font-size: 24px;
+}
+
+.score-number-text {
+  font-size: 50px;
+}
+
+/* .dog-container {
+  display: flex;
+  flex-direction: column;
+} */
 /* Animations */
 
 @keyframes hand-load-1 {

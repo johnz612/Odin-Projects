@@ -14,10 +14,20 @@ const resultUserText = document.querySelector(".result-text-user");
 const resultCompText = document.querySelector(".result-text-comp");
 const userResultDiv = document.querySelector(".left");
 const compResultDiv = document.querySelector(".right");
+const userScore = document.querySelector(".user-score");
+const compScore = document.querySelector(".comp-score");
+const dog = document.querySelector(".dog");
 
 let user;
 let comp;
 let winner;
+let gameStatus = true;
+let dogPosition = 0;
+
+let score = {
+  user: 0,
+  comp: 0,
+};
 
 const handImages = {
   rock: "./img/rock.png",
@@ -36,7 +46,7 @@ const compChoice = function () {
   return choices[`${choice}`];
 };
 
-const updateUI = function () {
+const updateUI = function (sec) {
   rockUI.classList.toggle("animate-1");
   paperUI.classList.toggle("animate-2");
   scissorUI.classList.toggle("animate-3");
@@ -45,7 +55,7 @@ const updateUI = function () {
   setTimeout(function () {
     userChoiceBtn.classList.toggle("inactive");
     resultWindow.classList.toggle("inactive");
-  }, 2000);
+  }, sec);
 };
 
 // Update UI for User choice
@@ -89,44 +99,93 @@ const insertDrawDesign = function () {
 };
 
 const winnerDesignUI = function (winner) {
-  removePrevDesign();
+  // removePrevDesign();
   console.log(winner);
   if (winner === "user") {
+    score.user += 1;
+    userScore.textContent = score.user;
     resultUserText.textContent = "You win!";
     resultCompText.textContent = "Computer Loses!";
     userResultDiv.classList.add("win");
     compResultDiv.classList.add("loss");
-    console.log(userResultDiv.classList);
-    console.log(compResultDiv.classList);
   }
 
   if (winner === "comp") {
+    score.comp += 1;
+    compScore.textContent = score.comp;
     resultUserText.textContent = "You Lose!";
     resultCompText.textContent = "Computer Wins!";
     userResultDiv.classList.add("loss");
     compResultDiv.classList.add("win");
-    console.log(userResultDiv.classList);
-    console.log(compResultDiv.classList);
+    dogPosition += 60;
+    dog.style.top = `${dogPosition}px`;
   }
 };
 
 const implementResults = function (winner) {
-  if (winner === "draw") {
-    insertDrawDesign();
-  } else {
-    winnerDesignUI(winner);
-  }
+  removePrevDesign();
+  setTimeout(function () {
+    userChoiceBtn.style.pointerEvents = "auto";
+    if (winner === "draw") {
+      insertDrawDesign();
+    } else {
+      winnerDesignUI(winner);
+    }
+
+    if (isGameEnd()) {
+      gameStatus = false;
+    }
+  }, 3000);
 };
 
-userChoiceBtn.addEventListener("click", function (e) {
-  userChoiceBtn.style.pointerEvents = "none";
-  const userChoiceHtml = e.target.closest(".option");
-  if (!userChoiceHtml) return;
-  user = userChoiceHtml.dataset.choice;
-  console.log(userResultDiv.classList.contains("draw"));
-  updateUI();
-  userHand(user);
-  compHand();
-  winner = determineWinner(user, comp);
-  implementResults(winner);
-});
+const endRound = function (sec) {
+  setTimeout(function () {
+    resultWindow.addEventListener("click", function () {
+      if (gameStatus) {
+        updateUI(sec);
+      } else {
+        gameRestart();
+        updateUI(sec);
+        gameStatus = true;
+      }
+    });
+  }, 2000);
+};
+
+const isGameEnd = function () {
+  return Object.values(score).includes(5);
+};
+
+const gameRestart = function () {
+  score = {
+    user: 0,
+    comp: 0,
+  };
+  userScore.textContent = score.user;
+  compScore.textContent = score.comp;
+  dog.style.top = "0px";
+};
+
+const gameRound = function () {
+  userChoiceBtn.addEventListener("click", function (e) {
+    const userChoiceHtml = e.target.closest(".option");
+    if (!userChoiceHtml) return;
+    user = userChoiceHtml.dataset.choice;
+    userChoiceBtn.style.pointerEvents = "none";
+    updateUI(2000);
+    userHand(user);
+    compHand();
+    winner = determineWinner(user, comp);
+    implementResults(winner);
+
+    // endRound();
+  });
+};
+
+// while (!isGameEnd()) {
+//   gameRound();
+// }
+
+gameRound();
+
+endRound(0);

@@ -17,54 +17,61 @@
       <h1 class="header-text">Rock Paper Scissor</h1>
     </header>
     <div class="main-container">
-      <!-- <div class="dog-lava">
-      <img class="dog" src="./hanging_dog.png" alt="Hanging Dog" />
-      <video class="vid-lava" src="./lava.mp4" autoplay loop muted></video>
-    </div> -->
+      <div class="scoreboard scoreboard-user">
+        <p class="score-text">User Score</p>
+        <p class="score-number-text user-score">0</p>
+      </div>
+      <div class="container">
+        <div class="user-options">
+          <div class="option" data-choice="rock">
+            <img class="hand-img rock" src="./img/rock.png" alt="Rock" />
+            <!--animate-1 -->
 
-      <p class="user-options-text">Rock Paper or Scissors?</p>
-      <div class="user-options">
-        <div class="option" data-choice="rock">
-          <img class="hand-img rock" src="./img/rock.png" alt="Rock" />
-          <!--animate-1 -->
-
-          <p class="option-text choose-text">Choose Rock</p>
+            <p class="option-text choose-text">Choose Rock</p>
+          </div>
+          <div class="option" data-choice="paper">
+            <img class="hand-img paper" src="./img/paper.png" alt="Paper" />
+            <!--animate-2 -->
+            <p class="option-text choose-text">Choose Paper</p>
+          </div>
+          <div class="option" data-choice="scissor">
+            <img class="hand-img scissor" src="./img/scissor.png" alt="Rock" />
+            <!--animate-3 -->
+            <p class="option-text choose-text">Choose Scissor</p>
+          </div>
         </div>
-        <div class="option" data-choice="paper">
-          <img class="hand-img paper" src="./img/paper.png" alt="Paper" />
-          <!--animate-2 -->
-          <p class="option-text choose-text">Choose Paper</p>
+        <div class="result-window inactive">
+          <div>
+            <p class="result-text-user">You win</p>
+            <div class="user left">
+              <img
+                class="hand-img user-result-image"
+                src="./img/rock.png"
+                alt="rock"
+              />
+              <p class="choose-text user-choice-text">Player choose rock</p>
+            </div>
+          </div>
+          <div>
+            <p class="result-text-comp">Computer wins</p>
+            <div class="user right">
+              <img
+                class="hand-img comp-result-image"
+                src="./img/paper.png"
+                alt="rock"
+              />
+              <p class="choose-text comp-choice-text">Computer choose paper</p>
+            </div>
+          </div>
         </div>
-        <div class="option" data-choice="scissor">
-          <img class="hand-img scissor" src="./img/scissor.png" alt="Rock" />
-          <!--animate-3 -->
-          <p class="option-text choose-text">Choose Scissor</p>
+        <div class="dog-container">
+          <img class="dog" src="./hanging_dog.png" alt="" />
+          <video class="lava" src="./lava.mp4" autoplay loop muted></video>
         </div>
       </div>
-      <div class="animation-window"></div>
-      <div class="result-window inactive">
-        <div>
-          <p class="result-text-user">You win</p>
-          <div class="user left">
-            <img
-              class="hand-img user-result-image"
-              src="./img/rock.png"
-              alt="rock"
-            />
-            <p class="choose-text user-choice-text">Player choose rock</p>
-          </div>
-        </div>
-        <div>
-          <p class="result-text-comp">Computer wins</p>
-          <div class="user right">
-            <img
-              class="hand-img comp-result-image"
-              src="./img/paper.png"
-              alt="rock"
-            />
-            <p class="choose-text comp-choice-text">Computer choose paper</p>
-          </div>
-        </div>
+      <div class="scoreboard scoreboard-comp">
+        <p class="score-text">Computer Score</p>
+        <p class="score-number-text comp-score">0</p>
       </div>
     </div>
 
