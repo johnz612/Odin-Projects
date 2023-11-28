@@ -45,7 +45,6 @@ body {
 }
 
 .user-options {
-  margin-top: 50px;
   width: 80%;
   text-align: center;
   height: 250px;
@@ -57,7 +56,7 @@ body {
 
 .dog-container {
   background-color: rgb(255, 255, 255);
-  height: 600px;
+  height: 480px;
   display: flex;
   flex-direction: column;
   width: 150px;
@@ -81,9 +80,13 @@ body {
   padding: 2px;
 }
 
+.text-dog {
+  margin-top: 20px;
+}
+
 .result-window {
   height: 250px;
-  margin-top: 50px;
+
   display: flex;
   gap: 18px;
   align-items: center;

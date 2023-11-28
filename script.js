@@ -117,7 +117,7 @@ const winnerDesignUI = function (winner) {
     resultCompText.textContent = "Computer Wins!";
     userResultDiv.classList.add("loss");
     compResultDiv.classList.add("win");
-    dogPosition += 60;
+    dogPosition += 50;
     dog.style.top = `${dogPosition}px`;
   }
 };
@@ -164,6 +164,7 @@ const gameRestart = function () {
   userScore.textContent = score.user;
   compScore.textContent = score.comp;
   dog.style.top = "0px";
+  dogPosition = 0;
 };
 
 const gameRound = function () {
